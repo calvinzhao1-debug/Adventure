@@ -1,7 +1,11 @@
 import Link from "next/link";
+import Hero from "@/components/Hero";
+// import any other necessary modules here
 
 export default function Home() {
   return (
+  <div>
+      <Hero imageUrl="/adsoc-bouldering.jpg" />
     <div className="flex flex-col items-center justify-center py-20 md:py-32 px-4 text-center">
       <div className="space-y-6 max-w-3xl">
         <div className="inline-block rounded-full bg-blue-900/30 px-3 py-1 text-sm text-blue-400 mb-4 border border-blue-800">
@@ -29,5 +33,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+  </div>
   );
 }

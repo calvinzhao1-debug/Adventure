@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -12,6 +14,25 @@ import Typography from '@mui/material/Typography';
 import Facebook from '@mui/icons-material/Facebook';
 import Instagram from '@mui/icons-material/Instagram';
 import TikTok from '@mui/icons-material/GitHub';
+import NextLink from 'next/link';
+
+const NextLinkComposed = React.forwardRef(function NextLinkComposed(props: any, ref: any) {
+  const { to, href, replace, scroll, shallow, prefetch, locale, children, ...other } = props;
+  return (
+    <NextLink
+      href={to || href}
+      replace={replace}
+      scroll={scroll}
+      shallow={shallow}
+      prefetch={prefetch}
+      locale={locale}
+      ref={ref}
+      {...other}
+    >
+      {children}
+    </NextLink>
+  );
+});
 // import SitemarkIcon from './SitemarkIcon';
 
 function Copyright() {
@@ -109,19 +130,22 @@ export default function Footer() {
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
               Pages
             </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link component={NextLinkComposed} to="/" href="/" color="text.secondary" variant="body2">
+              Home
+            </Link>
+            <Link component={NextLinkComposed} to="/events" href="/events" color="text.secondary" variant="body2">
               Events
             </Link>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link component={NextLinkComposed} to="/about" href="/about" color="text.secondary" variant="body2">
               About
             </Link>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link component={NextLinkComposed} to="/team" href="/team" color="text.secondary" variant="body2">
               Team
             </Link>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link component={NextLinkComposed} to="/membership" href="/membership" color="text.secondary" variant="body2">
               Membership
             </Link>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link component={NextLinkComposed} to="/sponsors" href="/sponsors" color="text.secondary" variant="body2">
               Sponsors
             </Link>
           </Box>
