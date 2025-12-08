@@ -13,9 +13,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import Link from 'next/link';
+// import { NextLinkComposed } from '../src/Link';
+
 // import ColorModeIconDropdown from '.././theme/ColorModeIconDropdown';
 // import Sitemark from './SitemarkIcon';
-import AdsocLogo from '../public/logo-black.svg';
+// import AdsocLogo from '../public/logo-black.svg';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -55,7 +58,9 @@ export default function AppAppBar() {
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
               {/* <Sitemark /> */}
-              <img src="/logo-black.svg" alt="Adsoc Logo" width={120} height={40} style={{ marginLeft: 8 }} />
+              <Link href="/">
+                <img src="/logo-black.svg" alt="Adsoc Logo" width={120} height={40} style={{ marginLeft: 8 }} />
+              </Link>
             {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               
             </Box> */}
@@ -67,19 +72,19 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button variant="text" color="info" size="small">
-                Events
-              </Button>
-              <Button variant="text" color="info" size="small">
+            <Button component={Link} href="/events" variant="text" color="info" size="small">
+              Events
+            </Button>
+              <Button component={Link} href="/about" variant="text" color="info" size="small">
                 About
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button component={Link} href="/team" variant="text" color="info" size="small">
                 Team
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button component={Link} href="/membership" variant="text" color="info" size="small">
                 Membership
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button component={Link} href="/sponsors" variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
                 Sponsors
               </Button>
             {/* <Button color="primary" variant="text" size="small">
