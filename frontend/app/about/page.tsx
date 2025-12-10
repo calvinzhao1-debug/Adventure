@@ -1,9 +1,10 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid'; 
+import PageHeader from '@/components/ui/PageHeader';
+import StatCard from '@/components/ui/StatCard';
+import Hero from '@/components/Hero';
 
 export default function AboutPage() {
   const stats = [
@@ -14,20 +15,19 @@ export default function AboutPage() {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      {/* Header */}
-      <Box sx={{ textAlign: 'center', mb: 8 }}>
-        <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
-          About <Box component="span" sx={{ color: 'info.main' }}>ADSOC</Box>
-        </Typography>
-        <Typography variant="h5" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-          We are the University of New South Wales Adventure Society.
-        </Typography>
-      </Box>
+    <Container maxWidth="lg" sx={{ py: 0 }}>
+      <Hero 
+        imageUrl="/adsoc-bouldering.jpg"
+        title="UNSW Adventure Society"
+        subtitle="Exploration • Camaraderie • The Great Outdoors"
+      />
+      <PageHeader 
+        title={<>About <Box component="span" sx={{ color: 'info.main' }}>ADSOC</Box></>}
+        subtitle="We are the University of New South Wales Adventure Society."
+      />
 
       {/* Mission Section */}
       <Grid container spacing={6} alignItems="center" sx={{ mb: 10 }}>
-        {/* Changed 'item xs={12}' to 'size={{ xs: 12 }}' */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ borderLeft: 4, borderColor: 'info.main', pl: 3 }}>
             <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
@@ -56,7 +56,6 @@ export default function AboutPage() {
               color: 'grey.600'
             }}
           >
-            {/* Placeholder for Mission Image */}
             [Mission Image Placeholder]
           </Box>
         </Grid>
@@ -65,18 +64,8 @@ export default function AboutPage() {
       {/* Stats Grid */}
       <Grid container spacing={3}>
         {stats.map((stat, index) => (
-          // Updated stats grid items
           <Grid size={{ xs: 6, md: 3 }} key={index}>
-            <Card sx={{ bgcolor: 'transparent', border: '1px solid', borderColor: 'grey.800', textAlign: 'center' }}>
-              <CardContent>
-                <Typography variant="h3" sx={{ fontWeight: 'bold', color: 'info.main', mb: 1 }}>
-                  {stat.value}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'grey.500', textTransform: 'uppercase', letterSpacing: 1 }}>
-                  {stat.label}
-                </Typography>
-              </CardContent>
-            </Card>
+            <StatCard value={stat.value} label={stat.label} />
           </Grid>
         ))}
       </Grid>

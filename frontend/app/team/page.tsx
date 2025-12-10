@@ -1,3 +1,5 @@
+import Hero from "@/components/Hero";
+
 const team = [
   { name: "Alex Chen", role: "President", image: "https://i.pravatar.cc/150?u=a" },
   { name: "Sarah Smith", role: "V.P. Internal", image: "https://i.pravatar.cc/150?u=b" },
@@ -8,6 +10,11 @@ const team = [
 export default function TeamPage() {
   return (
     <div className="container mx-auto px-4 py-12 text-center">
+      <Hero 
+        imageUrl="/adsoc-bouldering.jpg"
+        title="UNSW Adventure Society"
+        subtitle="Exploration • Camaraderie • The Great Outdoors"
+      />
       <h1 className="text-3xl font-bold mb-4">Meet the Execs</h1>
       <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
         The team working hard behind the scenes to bring you the best Data Science experience at UNSW.

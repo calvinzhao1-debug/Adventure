@@ -1,36 +1,99 @@
-import Link from "next/link";
 import Hero from "@/components/Hero";
+import LinkButton from "@/components/ui/LinkButton"; // Import the new component
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default function Home() {
   return (
-    <div>
+    <Box sx={{ bgcolor: 'black', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      
+      {/* 1. Hero Section */}
       <Hero 
         imageUrl="/Ski_trip_banner.jpg"
         title="UNSW Adventure Society"
         subtitle="Exploration • Camaraderie • The Great Outdoors"
       />
-      
-      {/* Rest of your page content */}
-      <div className="flex flex-col items-center justify-center py-20 px-4 text-center bg-black">
-        <div className="space-y-6 max-w-3xl">
-          <div className="inline-block rounded-full bg-blue-900/30 px-3 py-1 text-sm text-blue-400 mb-4 border border-blue-800">
-            Welcome to Term 1, 2025 🚀
-          </div>
-          
-          <p className="text-lg text-gray-400 mx-auto max-w-2xl">
-            We are the UNSW Data Science Society. We run workshops, hackathons, and networking events to help you succeed.
-          </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link href="/membership" className="h-12 px-8 rounded-full bg-white text-black font-bold flex items-center justify-center hover:bg-gray-200 transition">
+      {/* 2. Main Content Section */}
+      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 }, textAlign: 'center' }}>
+        <Stack spacing={4} alignItems="center">
+          
+          {/* Welcome Badge */}
+          <Chip 
+            label="Welcome to Term 1, 2025 🚀" 
+            variant="outlined" 
+            color="info" 
+            sx={{ 
+              borderColor: 'rgba(56, 189, 248, 0.3)', 
+              color: '#38bdf8',
+              bgcolor: 'rgba(56, 189, 248, 0.1)',
+              fontWeight: 500,
+              px: 1
+            }} 
+          />
+
+          {/* Main Headline */}
+          <Typography variant="h2" component="h1" sx={{ fontWeight: 800, color: 'white', letterSpacing: '-0.02em' }}>
+            Unlocking your next <br />
+            <Box component="span" sx={{ 
+              background: 'linear-gradient(90deg, #38bdf8, #22d3ee)', 
+              backgroundClip: 'text', 
+              textFillColor: 'transparent', 
+              color: 'transparent' // Fallback
+            }}>
+              Great Adventure
+            </Box>
+          </Typography>
+          
+          {/* Subtext */}
+          <Typography variant="h6" sx={{ color: 'grey.400', maxWidth: 'sm', lineHeight: 1.6 }}>
+            We are the UNSW Adventure Society. We bridge the gap between campus life and the wilderness through hiking, camping, and climbing events.
+          </Typography>
+
+          {/* Action Buttons - Updated to use LinkButton */}
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 2 }}>
+            <LinkButton 
+              href="/membership" 
+              variant="contained" 
+              size="large"
+              color="inherit"
+              sx={{ 
+                bgcolor: 'white', 
+                color: 'black', 
+                fontWeight: 'bold', 
+                px: 4, 
+                py: 1.5,
+                borderRadius: 50,
+                '&:hover': { bgcolor: 'grey.200' }
+              }}
+            >
               Become a Member
-            </Link>
-            <Link href="/events" className="h-12 px-8 rounded-full border border-gray-600 text-white font-medium hover:bg-gray-800 transition flex items-center justify-center">
+            </LinkButton>
+            
+            <LinkButton 
+              href="/events" 
+              variant="outlined" 
+              size="large"
+              endIcon={<ArrowForwardIcon />}
+              sx={{ 
+                color: 'white', 
+                borderColor: 'grey.700', 
+                px: 4, 
+                py: 1.5,
+                borderRadius: 50,
+                '&:hover': { borderColor: 'white', bgcolor: 'rgba(255,255,255,0.05)' }
+              }}
+            >
               View Upcoming Events
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+            </LinkButton>
+          </Stack>
+
+        </Stack>
+      </Container>
+    </Box>
   );
 }

@@ -68,11 +68,11 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >      
-            <Button component={Link} href="/events" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
-              Events
-            </Button>
             <Button component={Link} href="/about" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
               About
+            </Button>
+            <Button component={Link} href="/events" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
+              Events
             </Button>
             <Button component={Link} href="/team" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
               Team

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react"; // install lucide-react if you want icons
+import Hero from "@/components/Hero";
 
 const benefits = [
   "Exclusive access to industry networking nights",
@@ -11,6 +12,11 @@ const benefits = [
 export default function MembershipPage() {
   return (
     <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-12">
+      <Hero 
+        imageUrl="/adsoc-bouldering.jpg"
+        title="UNSW Adventure Society"
+        subtitle="Exploration • Camaraderie • The Great Outdoors"
+      />
       <div className="flex-1 space-y-6">
         <h1 className="text-4xl font-bold">Join the Community</h1>
         <p className="text-lg text-gray-400">

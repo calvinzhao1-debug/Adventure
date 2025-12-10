@@ -1,4 +1,5 @@
 import EventCard from "@/components/ui/EventCard";
+import Hero from "@/components/Hero";
 
 // Mock data (replace with real API data later)
 const events = [
@@ -34,6 +35,11 @@ const events = [
 export default function EventsPage() {
   return (
     <div className="min-h-screen bg-black">
+      <Hero 
+        imageUrl="/adsoc-bouldering.jpg"
+        title="UNSW Adventure Society"
+        subtitle="Exploration • Camaraderie • The Great Outdoors"
+      />
       {/* Page Header */}
       <div className="bg-gray-900/30 border-b border-gray-800">
         <div className="container mx-auto px-4 py-16 text-center">
