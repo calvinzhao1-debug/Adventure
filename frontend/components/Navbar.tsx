@@ -34,6 +34,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     : alpha(theme.palette.background.default, 0.4),
   boxShadow: (theme.vars || theme).shadows[1],
   padding: '8px 12px',
+  minHeight: 72,
 }));
 
 export default function AppAppBar() {
@@ -47,19 +48,20 @@ export default function AppAppBar() {
     <AppBar
       position="fixed"
       enableColorOnDark
-      sx={{
+      sx={(theme) => ({
         boxShadow: 0,
-        bgcolor: 'transparent',
+        bgcolor: (theme.vars || theme).palette.primary.main,
+        color: (theme.vars || theme).palette.primary.contrastText,
         backgroundImage: 'none',
         mt: 0,
-      }}
+      })}
     >
       {/* <Container maxWidth="lg"> */}
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
               {/* <Sitemark /> */}
               <Link href="/">
-                <img src="/logo-black.svg" alt="Adsoc Logo" width={120} height={40} style={{ marginLeft: 8 }} />
+                <img src="/logo-white.svg" alt="Adsoc Logo" width={200} height={60} style={{ marginLeft: 8 }} />
               </Link>
             {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               
@@ -68,25 +70,25 @@ export default function AppAppBar() {
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              gap: 1,
+              gap: 2,
               alignItems: 'center',
             }}
-          >
-            <Button component={Link} href="/events" variant="text" color="info" size="small">
+          >            
+            <Button component={Link} href="/events" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
               Events
             </Button>
-              <Button component={Link} href="/about" variant="text" color="info" size="small">
-                About
-              </Button>
-              <Button component={Link} href="/team" variant="text" color="info" size="small">
-                Team
-              </Button>
-              <Button component={Link} href="/membership" variant="text" color="info" size="small">
-                Membership
-              </Button>
-              <Button component={Link} href="/sponsors" variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Sponsors
-              </Button>
+            <Button component={Link} href="/about" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
+              About
+            </Button>
+            <Button component={Link} href="/team" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
+              Team
+            </Button>
+            <Button component={Link} href="/membership" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
+              Membership
+            </Button>
+            <Button component={Link} href="/sponsors" variant="text" color="info" size="large" sx={{ px: 2, py: 0, minWidth: 0, fontWeight: 700, color: '#ffffff' }}>
+              Sponsors
+            </Button>
             {/* <Button color="primary" variant="text" size="small">
               Sign in
             </Button>
@@ -121,15 +123,14 @@ export default function AppAppBar() {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem>About</MenuItem>
+                <MenuItem>Events</MenuItem>
+                <MenuItem>Sponsors</MenuItem>
+                <MenuItem>Membership</MenuItem>
+                <MenuItem>Contact us</MenuItem>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
+                {/* <MenuItem>
+                  <Button color="primary" variant="contained" fullWidth sx={{ fontWeight: 700, color: '#ffffff' }}>
                     Sign up
                   </Button>
                 </MenuItem>
@@ -137,7 +138,7 @@ export default function AppAppBar() {
                   <Button color="primary" variant="outlined" fullWidth>
                     Sign in
                   </Button>
-                </MenuItem>
+                </MenuItem> */}
               </Box>
             </Drawer>
           </Box>

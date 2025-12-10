@@ -113,7 +113,7 @@ export default function Footer() {
                   variant="contained"
                   color="primary"
                   size="small"
-                  sx={{ flexShrink: 0 }}
+                  sx={{ flexShrink: 0, fontWeight: 700, color: '#ffffff' }}
                 >
                   Subscribe
                 </Button>
@@ -134,19 +134,19 @@ export default function Footer() {
               Home
             </Link>
             <Link component={NextLinkComposed} to="/events" href="/events" color="text.secondary" variant="body2">
-              Events
-            </Link>
-            <Link component={NextLinkComposed} to="/about" href="/about" color="text.secondary" variant="body2">
               About
             </Link>
+            <Link component={NextLinkComposed} to="/about" href="/about" color="text.secondary" variant="body2">
+              Events
+            </Link>
             <Link component={NextLinkComposed} to="/team" href="/team" color="text.secondary" variant="body2">
-              Team
+              Sponsors
             </Link>
             <Link component={NextLinkComposed} to="/membership" href="/membership" color="text.secondary" variant="body2">
               Membership
             </Link>
             <Link component={NextLinkComposed} to="/sponsors" href="/sponsors" color="text.secondary" variant="body2">
-              Sponsors
+              Contact us
             </Link>
           </Box>
           <Box
