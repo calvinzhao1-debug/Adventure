@@ -1,45 +1,79 @@
-// frontend/app/sponsors/page.tsx
-import Link from "next/link";
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 export default function SponsorsPage() {
   return (
-    <div className="container mx-auto px-4 py-16 flex flex-col items-center min-h-[80vh]">
-      <div className="text-center mb-16 max-w-3xl">
-        <h1 className="text-4xl font-bold mb-6">Our Partners</h1>
-        <p className="text-lg text-gray-400">
-          We are proud to be supported by these amazing organizations that help make our 
-          adventures safer, cheaper, and more accessible for all students.
-        </p>
-      </div>
+    <Container maxWidth="lg" sx={{ py: 10, minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ textAlign: 'center', mb: 8, maxWidth: 'sm' }}>
+        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
+          Our Partners
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          Proudly supported by organizations that help make our adventures safer, cheaper, and more accessible.
+        </Typography>
+      </Box>
 
       {/* Sponsors Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-5xl mb-20">
-        {/* You can map through an array of sponsor logos here */}
+      <Grid container spacing={4} sx={{ mb: 10, width: '100%' }}>
         {[1, 2, 3, 4].map((i) => (
-          <div 
-            key={i} 
-            className="aspect-[3/2] bg-white/5 border border-gray-800 rounded-xl flex items-center justify-center hover:bg-white/10 hover:border-blue-500/50 transition duration-300 cursor-pointer group"
-          >
-            <span className="text-gray-500 font-mono group-hover:text-blue-400 transition">
-              LOGO {i}
-            </span>
-          </div>
+          // Fixed: Removed 'item' prop and used 'size' prop for Grid2
+          <Grid size={{ xs: 6, md: 3 }} key={i}>
+            <Box
+              sx={{
+                aspectRatio: '3/2',
+                bgcolor: 'rgba(255,255,255,0.05)',
+                border: '1px solid',
+                borderColor: 'grey.800',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s',
+                '&:hover': {
+                  borderColor: 'info.main',
+                  bgcolor: 'rgba(255,255,255,0.1)',
+                }
+              }}
+            >
+              <Typography variant="button" color="text.secondary">LOGO {i}</Typography>
+            </Box>
+          </Grid>
         ))}
-      </div>
+      </Grid>
 
       {/* Call to Action */}
-      <div className="w-full max-w-4xl bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-2xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl font-bold text-white mb-4">Interested in Sponsoring Us?</h2>
-        <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-          Connect with hundreds of adventurous students. We offer various sponsorship tiers including branding on merchandise, social media features, and event partnerships.
-        </p>
-        <Link 
-          href="mailto:contact@adsoc.unsw.edu.au" 
-          className="inline-block bg-white text-black font-bold px-8 py-3 rounded-full hover:bg-gray-200 transition"
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 'md',
+          background: 'linear-gradient(45deg, rgba(13,71,161,0.2), rgba(81,45,168,0.2))',
+          border: '1px solid',
+          borderColor: 'rgba(66,165,245,0.3)',
+          borderRadius: 4,
+          p: { xs: 4, md: 6 },
+          textAlign: 'center'
+        }}
+      >
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: 'white' }}>
+          Interested in Sponsoring Us?
+        </Typography>
+        <Typography variant="body1" sx={{ color: 'grey.300', mb: 4, maxWidth: 'sm', mx: 'auto' }}>
+          Connect with hundreds of adventurous students. We offer various sponsorship tiers including branding on merchandise and event partnerships.
+        </Typography>
+        <Button 
+          variant="contained" 
+          color="inherit" 
+          size="large"
+          href="mailto:contact@adsoc.unsw.edu.au"
+          sx={{ color: 'black', fontWeight: 'bold', borderRadius: 50, px: 4 }}
         >
           Get in Touch
-        </Link>
-      </div>
-    </div>
+        </Button>
+      </Box>
+    </Container>
   );
 }

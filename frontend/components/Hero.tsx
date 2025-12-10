@@ -1,39 +1,84 @@
-// frontend/components/Hero.tsx
+"use client";
+
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
 interface HeroProps {
   imageUrl: string;
   title?: string;
+  subtitle?: string;
 }
 
-export default function Hero({ imageUrl, title = "UNSW Adventure Society" }: HeroProps) {
+export default function Hero({ 
+  imageUrl, 
+  title = "UNSW Adventure Society", 
+  subtitle = "Exploration • Camaraderie • The Great Outdoors" 
+}: HeroProps) {
   return (
-    <div className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${imageUrl})` }}
-      >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-        <div className="inline-block px-4 py-1.5 mb-6 border border-white/20 rounded-full bg-white/10 backdrop-blur-md">
-          <span className="text-sm font-medium text-blue-200 uppercase tracking-wider">Est. 2008</span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 drop-shadow-2xl">
-          {title}
-        </h1>
-        <p className="text-lg md:text-2xl text-gray-200 font-light max-w-2xl mx-auto">
-          Your gateway to the outdoors. Hiking, climbing, and exploring New South Wales.
-        </p>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
-    </div>
+    <Box
+      id="hero"
+      sx={{
+        // Force full viewport width and break out of parent containers
+        width: '100vw',
+        marginLeft: 'calc(50% - 50vw)',
+        marginRight: 'calc(50% - 50vw)',
+        overflow: 'hidden', // Prevents horizontal scrollbars
+        
+        minHeight: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        // Low tint (0.3) for better image visibility
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("${imageUrl}")`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Container maxWidth="lg">
+        <Stack spacing={4} alignItems="center">
+          <Box
+            // sx={{
+            //   px: { xs: 3, md: 6 },
+            //   py: { xs: 2, md: 4 },
+            //   borderRadius: 4,
+            //   backgroundColor: 'rgba(0, 0, 0, 0.1)', // Slightly more transparent box
+            //   backdropFilter: 'blur(8px)',
+            //   border: '1px solid rgba(255, 255, 255, 0.15)',
+            //   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+            // }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                textAlign: 'center',
+                fontWeight: 900,
+                fontSize: { xs: '3rem', md: '5.5rem' }, // Increased font size slightly for full screen
+                color: 'white',
+                letterSpacing: '-0.02em',
+                textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+              }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="h5"
+              component="p"
+              sx={{
+                textAlign: 'center',
+                color: 'rgba(255,255,255,0.95)',
+                mt: 2,
+                fontWeight: 500,
+                textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+              }}
+            >
+              {subtitle}
+            </Typography>
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   );
 }

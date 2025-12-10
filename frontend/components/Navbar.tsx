@@ -14,11 +14,6 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import Link from 'next/link';
-// import { NextLinkComposed } from '../src/Link';
-
-// import ColorModeIconDropdown from '.././theme/ColorModeIconDropdown';
-// import Sitemark from './SitemarkIcon';
-// import AdsocLogo from '../public/logo-black.svg';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -27,14 +22,18 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   flexShrink: 0,
   borderRadius: `calc(${theme.shape.borderRadius}px + 0px)`,
   backdropFilter: 'blur(24px)',
-  border: '0px solid',
-  borderColor: (theme.vars || theme).palette.divider,
-  backgroundColor: theme.vars
-    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
-    : alpha(theme.palette.background.default, 0.4),
+  border: '1px solid',
+  // Modern Light Blue Border with low opacity
+  borderColor: alpha('#38bdf8', 0.3), 
+  // Modern Light Blue Background (Sky 500) with transparency for glass effect
+  backgroundColor: alpha('#0ea5e9', 0.15), 
   boxShadow: (theme.vars || theme).shadows[1],
   padding: '8px 12px',
-  minHeight: 72,
+  transition: 'all 0.3s ease-in-out',
+  '&:hover': {
+    backgroundColor: alpha('#0ea5e9', 0.25),
+    borderColor: alpha('#38bdf8', 0.5),
+  }
 }));
 
 export default function AppAppBar() {
@@ -56,24 +55,19 @@ export default function AppAppBar() {
         mt: 0,
       })}
     >
-      {/* <Container maxWidth="lg"> */}
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-              {/* <Sitemark /> */}
               <Link href="/">
-                <img src="/logo-white.svg" alt="Adsoc Logo" width={200} height={60} style={{ marginLeft: 8 }} />
+                <img src="/logo-white.svg" alt="Adsoc Logo" width={120} height={40} style={{ marginLeft: 8 }} />
               </Link>
-            {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              
-            </Box> */}
           </Box>
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              gap: 2,
+              gap: 1,
               alignItems: 'center',
             }}
-          >            
+          >      
             <Button component={Link} href="/events" variant="text" color="info" size="large" sx={{ px: 2, py: 0, fontWeight: 700, color: '#ffffff' }}>
               Events
             </Button>
@@ -89,16 +83,8 @@ export default function AppAppBar() {
             <Button component={Link} href="/sponsors" variant="text" color="info" size="large" sx={{ px: 2, py: 0, minWidth: 0, fontWeight: 700, color: '#ffffff' }}>
               Sponsors
             </Button>
-            {/* <Button color="primary" variant="text" size="small">
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
-            </Button> */}
-            {/* <ColorModeIconDropdown /> */}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            {/* <ColorModeIconDropdown size="medium" /> */}
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
@@ -129,21 +115,10 @@ export default function AppAppBar() {
                 <MenuItem>Membership</MenuItem>
                 <MenuItem>Contact us</MenuItem>
                 <Divider sx={{ my: 3 }} />
-                {/* <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth sx={{ fontWeight: 700, color: '#ffffff' }}>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
-                </MenuItem> */}
               </Box>
             </Drawer>
           </Box>
         </StyledToolbar>
-      {/* </Container> */}
     </AppBar>
   );
 }
